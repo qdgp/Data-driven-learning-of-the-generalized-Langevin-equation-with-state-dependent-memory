@@ -44,6 +44,7 @@ close all
 figure(1);hold on;box on;
 set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
 plot(PDF.ff_x,PDF.pdf)
+xlim([2.8,4.1])
 set(gca,'FontSize',30,'LineWidth',2.0)
 saveas(gcf,'fig/PDF.png')
 
