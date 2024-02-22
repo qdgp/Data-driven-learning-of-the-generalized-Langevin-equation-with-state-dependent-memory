@@ -54,12 +54,15 @@ corr3=load('data/corr_hx_GLE_1D.mat');
 corr4=load('data/corr_hx_GLE_2D.mat');
 
 figure(1);hold on;box on
+set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
 plot(ff_x,pdf)
 title('PDF')
 xlabel('x');ylabel('\rho (x)')
+set(gca,'FontSize',30,'LineWidth',2.0)
 saveas(gcf,'fig/PDF.png')
 
 figure(2);hold on;box on
+set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
 corr_ver='corr_vv';
 plot(corr1.corr_t,corr1.(corr_ver),'Displayname','MD')
 plot(corr2.corr_t,corr2.(corr_ver),'Displayname','GLE')
@@ -69,9 +72,11 @@ xlim([0,40])
 legend
 title('<v(t),v(0)>')
 xlabel('x');ylabel('\rho (x)')
+set(gca,'FontSize',30,'LineWidth',2.0)
 saveas(gcf,'fig/corr_vv.png')
 
 figure(3);hold on;box on
+set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
 corr_ver='xcorr_vv';
 i=1;
 for bin=8:8:32
@@ -83,10 +88,13 @@ for bin=8:8:32
     plot(corr2.xcorr_t,corr2.(corr_ver)(bin,:),'Displayname','GLE')
     plot(corr3.xcorr_t,corr3.(corr_ver)(bin,:),'Displayname','SD-GLE-1D')
     plot(corr4.xcorr_t,corr4.(corr_ver)(bin,:),'Displayname','SD-GLE-2D')
+    legend
+    set(gca,'FontSize',16,'LineWidth',2.0)
 end
 saveas(gcf,'fig/xcorr_vv.png')
 
 figure(4);hold on;box on
+set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
 tail_x=(0:500)*0.02;bd=0.08;
 plot(tail_x,ksdensity(corr1.tail,tail_x,'Bandwidth',bd),'Displayname','MD')
 plot(tail_x,ksdensity(corr2.tail,tail_x,'Bandwidth',bd),'Displayname','GLE')
@@ -97,6 +105,7 @@ set(gca, 'YScale', 'log')
 legend
 title('Distribution for the time that x>15')
 xlabel('t');ylabel('P(t)')
+set(gca,'FontSize',30,'LineWidth',2.0)
 saveas(gcf,'fig/tail.png')
 
 

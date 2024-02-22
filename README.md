@@ -35,4 +35,6 @@ Full data including MD data, training set and simulation data of unimodal case c
 
 ## software
 
-The python enviroments is given in file 'conda-environment.txt'. The Matlab version is 2022a. The LAMMPS version is (4 Jul 2012)
+Python enviroments is given in file 'conda-environment.txt'. 
+Matlab version is 2022a. 
+LAMMPS version is (4 Jul 2012)
