@@ -21,8 +21,8 @@ loop_num=100;
 Folder='/mnt/gs21/scratch/gepei/GLE_state_dependent/case1_GLE_data/';
 parfor i=1:loop_num
     step5_std_GLE(40,1,sample_per_loop,[Folder,'GLE_1D_rng_',num2str(i),'.mat'],i);
-    step5_hx_GLE(40,1,sample_per_loop,'ML_ND_4.mat',[Folder,'GLE_4D_rng_',num2str(i),'.mat'],i);
-    % replace 'ML_ND_4.mat' to 'ML_ND_4_std.mat' to use the model in the article
+    step5_hx_GLE(40,1,sample_per_loop,'ML_ND_4_lite.mat',[Folder,'GLE_4D_rng_',num2str(i),'.mat'],i);
+    % replace 'ML_ND_4_lite.mat' to other saved file name to use different models
 end
 
 %% compute correlation function from GLE models
