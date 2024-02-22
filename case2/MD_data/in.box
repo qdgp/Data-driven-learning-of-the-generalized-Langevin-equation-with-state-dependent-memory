@@ -1,0 +1,57 @@
+# LAMMPS input
+units        lj
+atom_style   full
+
+neighbor        0.3 bin
+neigh_modify    every 4 delay 4 check no
+special_bonds lj  1.0 1.0 1.0
+
+variable        replica_loop uloop 128
+#variable        replica_loop uloop 8
+variable        randseed_loop equal ${replica_loop}*2342
+
+read_data     data.box
+velocity     all create 1.0  ${randseed_loop}
+
+pair_style   lj/cut 10.0
+pair_coeff   1 1 0.005 1.800
+
+#bond_style   harmonic
+#bond_coeff   1 5 1.160      
+#bond_coeff   2 8 1.000
+#bond_coeff   3 3.89285 1.160      
+
+bond_style   fene
+bond_coeff   1 0.4 1.8 0 0.1 
+bond_coeff   2 0.64 1.6 0 0.1
+bond_coeff   3 0.32 1.8 0 0.1      
+#bond_coeff   1 0.8 1.8 0 0.1 
+#bond_coeff   2 1.28 1.6 0 0.1
+#bond_coeff   3 0.64 1.8 0 0.1      
+
+angle_style  harmonic
+angle_coeff  1 1.2 114.000
+angle_coeff  2 1.5 119.700     
+
+dihedral_style multi/harmonic
+dihedral_coeff 1 0.0673128 1.84796   0.0079261  -2.241088  -0.00578   0.005061 
+dihedral_coeff 2 0.16022190  -3.9993   0.248254   6.28369   0.016490  -0.014580
+
+improper_style harmonic
+#improper_coeff 1  9.269 180.0
+improper_coeff 1  0.1769 180.0
+
+fix   1 all nvt temp 1.00 1.0 0.4 tchain 20
+thermo          10000
+
+timestep 0.0015
+run 20000000
+#run 2000000
+timestep 0.0025
+
+dump  1 all custom 8 traj${replica_loop}.lammpstrj id xu yu zu vx vy vz
+#dump  1 all custom 20 traj.lammpstrj id mol type xu yu zu vx vy vz
+#dump  1 all custom 20 traj_short.lammpstrj id mol type xu yu zu
+#dump  1 all custom 20 traj.lammpstrj id mol type xu yu zu 
+
+run 80000001
