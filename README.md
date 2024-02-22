@@ -9,6 +9,9 @@ A state-dependent case with unimodal distribution, the probability distribution 
 The 1D h(x) is evalued without computing three-point correlation function by
 
 ```math
+m\dot{v}_t=F(x_t)-h(x_t)^T \int_0^t \theta(t-\tau)h(x_\tau) v_\tau d\tau+h(x_t)^T R_t 
+```
+```math
 h(x)= \frac{\langle \dot{v}_0-f(x_0),\dot{v}_0 |x_0=x \rangle}{\langle v_0,v_0 \rangle}.
 ```
 
