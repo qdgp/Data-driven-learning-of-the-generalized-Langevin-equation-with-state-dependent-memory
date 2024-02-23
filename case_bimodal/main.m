@@ -9,7 +9,7 @@ folder='/mnt/gs21/scratch/gepei/GLE_state_dependent/case1_training_set/';
 parfor i=1:M
     step3_training_set(folder,i);
 end
-step4_collect_training_set;
+step4_collect_training_set(folder);
 
 %%
 % train model with tensorflow
