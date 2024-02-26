@@ -68,8 +68,8 @@ A state-dependent case with bimodal distribution, the probability distribution f
 
 The following two figures shows $\langle v(t),v(0) \rangle$ and $\langle v(t),v(0) |x(0)=x^* \rangle$
 
-<img src="case_bimodal/fig/corr_vv.png" alt="drawing" width="400" />
-<img src="case_bimodal/fig/xcorr_vv.png" alt="drawing" width="400" />
+<img src="case_bimodal/fig/corr_vv.png" alt="drawing" width="49%" />
+<img src="case_bimodal/fig/xcorr_vv.png" alt="drawing" width="49%" />
 
 The following figure shows the distribution of the transition time between the two local minima.
 <img src="case_bimodal/fig/trates.png" alt="drawing" width="400" />
