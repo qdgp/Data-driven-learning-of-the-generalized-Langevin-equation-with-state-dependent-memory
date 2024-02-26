@@ -45,10 +45,19 @@ figure(1);hold on;box on;
 set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
 plot(PDF.ff_x,PDF.pdf)
 xlim([2.8,4.1])
+xlabel('q');ylabel('P(q)')
 set(gca,'FontSize',30,'LineWidth',2.0)
 saveas(gcf,'fig/PDF.png')
 
 figure(2);hold on;box on;
+set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
+plot(PDF.ff_x,-log(PDF.pdf))
+xlim([2.8,4.1])
+xlabel('q');ylabel('U(q)/k_BT')
+set(gca,'FontSize',30,'LineWidth',2.0)
+saveas(gcf,'fig/FreeEnergy.png')
+
+figure(3);hold on;box on;
 set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
 corr_ver='corr_vv';
 plot(corr1.corr_t,corr1.(corr_ver),'Displayname','MD')
@@ -59,7 +68,7 @@ legend
 set(gca,'FontSize',30,'LineWidth',2.0)
 saveas(gcf,'fig/corr_vv.png')
 
-figure(3);hold on;box on;
+figure(4);hold on;box on;
 set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
 corr_ver='xcorr_vv';
 i=1;
@@ -77,7 +86,7 @@ end
 saveas(gcf,'fig/xcorr_vv.png')
 
 
-figure(4);hold on;box on;
+figure(5);hold on;box on;
 set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
 t_sample = 80:80:8000;bd=80;
 plot(t_sample,ksdensity(corr1.t_A_B,t_sample,"Bandwidth",bd),'Displayname','MD')
