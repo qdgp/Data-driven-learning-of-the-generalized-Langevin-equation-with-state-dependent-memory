@@ -23,10 +23,10 @@ The example is given in folder 'case_unimodal', and 'main.m' provides how to dri
 4. Compute the 1D $h(q)$ by 'step2_hx.m'. This is done by only consider the state-dependency when $t=0$ ('data/PDF.mat').
 
 ```math
-m\dot{v}_t=F(q_t)-h(q_t) \int_0^t \theta(t-\tau)h(x_\tau) v_\tau d\tau+h(q_t) R_t 
+m\dot{v}_t=F(q_t)-h(q_t) \int_0^t \theta(t-\tau)h(q_\tau) v_\tau d\tau+h(q_t) R_t 
 ```
 ```math
-h(x)= \frac{\langle \dot{v}_0-f(q_0),\dot{v}_0 |q_0=q \rangle}{\langle v_0,v_0 \rangle}.
+h(q)= \frac{\langle \dot{v}_0-f(q_0),\dot{v}_0 |q_0=q \rangle}{\langle v_0,v_0 \rangle}.
 ```
 
 5. Compute the two points correlation functions by 'step3_corr.m' and 'step4_hx_corr.m' to construct 1D kernel ('data/corr.mat' and 'data/hx_corr.mat').
