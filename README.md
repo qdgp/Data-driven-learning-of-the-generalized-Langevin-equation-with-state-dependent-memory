@@ -32,9 +32,6 @@ h(q)= \frac{\langle \dot{v}_0-f(q_0),\dot{v}_0 |q_0=q \rangle}{\langle v_0,v_0 \
 5. Compute the two points correlation functions by 'step3_corr.m' and 'step4_hx_corr.m' to construct 1D kernel ('data/corr.mat' and 'data/hx_corr.mat').
 
 ```math
-\frac{m\dot{v}_t-F(q_t)}{h(q_t)}= \int_0^t \theta(t-\tau)h(q_\tau) v_\tau d\tau+ R_t 
-```
-```math
 \langle \frac{m\dot{v}_t-F(q_t)}{h(q_t)},v_0 \rangle= \int_0^t \theta(t-\tau) \langle h(q_\tau) v_\tau, v_0 \rangle d\tau+ R_t 
 ```
 
