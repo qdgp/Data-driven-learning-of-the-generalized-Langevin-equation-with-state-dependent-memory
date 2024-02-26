@@ -112,14 +112,16 @@ The following figure shows the distribution of the transition time between the t
 </p>
 
 
-## data
-Full data including MD data, training set and simulation data of unimodal case can be accessed from Globus with the link (https://app.globus.org/file-manager?origin_id=ec51ed95-bc26-44a4-a8a0-65b74d694c33&origin_path=%2F).
+## Full Data
+Due to the storage limitation of GitHub, we only upload part of the data. The full data including MD trajctories (example 1), positon and velocity of the resolved variables, simulation data (example1) can be accessed from Globus with the link (https://app.globus.org/file-manager?origin_id=ec51ed95-bc26-44a4-a8a0-65b74d694c33&origin_path=%2F).
 
 
-## software
+## Software and Library
 
 Python enviroments is given in file 'conda-environment.txt'. 
 
 Matlab version is 2022a. 
 
-LAMMPS version is (4 Jul 2012)
+LAMMPS version is (4 Jul 2012).
+
+The training is performed on v100s.
