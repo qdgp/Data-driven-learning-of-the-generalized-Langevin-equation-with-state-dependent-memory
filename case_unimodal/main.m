@@ -104,12 +104,36 @@ xlim([0,5])
 set(gca, 'YScale', 'log')
 legend
 title('Distribution for the time that x>15')
-xlabel('t');ylabel('P(t)')
+xlabel('time period');ylabel('distribution')
 set(gca,'FontSize',30,'LineWidth',2.0)
 saveas(gcf,'fig/tail.png')
 
+%%
+close all
+figure(5);hold on;box on
+set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
+tail_x=(0:500)*0.02;bd=0.08;
+plot(tail_x,ksdensity(corr1.tail,tail_x,'Bandwidth',bd),'Displayname','MD')
+plot(tail_x,ksdensity(corr2.tail,tail_x,'Bandwidth',bd),'Displayname','GLE')
+plot(tail_x,ksdensity(corr3.tail,tail_x,'Bandwidth',bd),'Displayname','SD-GLE-1D')
+plot(tail_x,ksdensity(corr4.tail,tail_x,'Bandwidth',bd),'Displayname','SD-GLE-2D')
+xlim([0,5])
+set(gca, 'YScale', 'log', 'XScale', 'log')
+legend('Location','Best')
+xlabel('time period');ylabel('distribution')
+set(gca,'FontSize',30,'LineWidth',2.0)
+saveas(gcf,'fig/tail_v2.png')
 
-
+figure(6);hold on;box on
+set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
+plot(ff_x,-log(pdf))
+ylim([0,15])
+xlabel('$q$','Interpreter','latex');
+ylabel('$U(q)/k_BT$','Interpreter','latex')
+xticks([0,10,20])
+yticks([0,5,10,15])
+set(gca,'FontSize',30,'LineWidth',2.0)
+saveas(gcf,'fig/FreeEnergy.png')
 
 
 
