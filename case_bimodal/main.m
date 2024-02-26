@@ -1,4 +1,5 @@
-%%
+%% For generating training sets and simulations.
+
 parpool(16)   % use parfor with 16 threads
 M=512; % specify the number of trajectories 
 step1_PDF(M);  % compute PDF with ksdensity

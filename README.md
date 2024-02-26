@@ -20,22 +20,22 @@ The example is given in folder 'case_unimodal', and 'main.m' provides how to dri
 
 3. Compute the probability distribution function by 'step1_PDF.m', which will also get the conservative force ('data/PDF.mat').
 
-4. Compute the 1D $h(x)$ by 'step2_hx.m'. This is done by only consider the state-dependency when $t=0$ ('data/PDF.mat').
+4. Compute the 1D $h(q)$ by 'step2_hx.m'. This is done by only consider the state-dependency when $t=0$ ('data/PDF.mat').
 
 ```math
-m\dot{v}_t=F(x_t)-h(x_t) \int_0^t \theta(t-\tau)h(x_\tau) v_\tau d\tau+h(x_t) R_t 
+m\dot{v}_t=F(q_t)-h(q_t) \int_0^t \theta(t-\tau)h(x_\tau) v_\tau d\tau+h(q_t) R_t 
 ```
 ```math
-h(x)= \frac{\langle \dot{v}_0-f(x_0),\dot{v}_0 |x_0=x \rangle}{\langle v_0,v_0 \rangle}.
+h(x)= \frac{\langle \dot{v}_0-f(q_0),\dot{v}_0 |q_0=q \rangle}{\langle v_0,v_0 \rangle}.
 ```
 
 5. Compute the two points correlation functions by 'step3_corr.m' and 'step4_hx_corr.m' to construct 1D kernel ('data/corr.mat' and 'data/hx_corr.mat').
 
 ```math
-\frac{m\dot{v}_t-F(x_t)}{h(x_t)}= \int_0^t \theta(t-\tau)h(x_\tau) v_\tau d\tau+ R_t 
+\frac{m\dot{v}_t-F(q_t)}{h(q_t)}= \int_0^t \theta(t-\tau)h(q_\tau) v_\tau d\tau+ R_t 
 ```
 ```math
-\langle \frac{m\dot{v}_t-F(x_t)}{h(x_t)},v_0 \rangle= \int_0^t \theta(t-\tau) \langle h(x_\tau) v_\tau, v_0 \rangle d\tau+ R_t 
+\langle \frac{m\dot{v}_t-F(q_t)}{h(q_t)},v_0 \rangle= \int_0^t \theta(t-\tau) \langle h(q_\tau) v_\tau, v_0 \rangle d\tau+ R_t 
 ```
 
 6. Compute three point correlation functions for ND state-dependent kernel by 'step3_training_set.m' and 'step4_collect_training_set.m' ('data/dx_10_w_501.mat').
@@ -54,7 +54,7 @@ h(x)= \frac{\langle \dot{v}_0-f(x_0),\dot{v}_0 |x_0=x \rangle}{\langle v_0,v_0 \
 <img src="case_unimodal/fig/PDF.png" alt="drawing" width="49%" />
 </p>
 
-The following two figures shows $\langle v(t),v(0) \rangle$ and $\langle v(t),v(0) |x(0)=x^* \rangle$
+The following two figures shows $\langle v(t),v(0) \rangle$ and $\langle v(t),v(0) |q(0)=q^* \rangle$
 
 <p align="center">
   <img src="case_unimodal/fig/corr_vv.png" alt="drawing" width="49%" />
@@ -62,7 +62,7 @@ The following two figures shows $\langle v(t),v(0) \rangle$ and $\langle v(t),v(
 </p>
 
 
-The following figure shows the distribution of the continuous time period that $x>15$.
+The following figure shows the distribution of the period for the molecule taking a certain conformation state ($q>15$).
 
 <p align="center">
 <img src="case_unimodal/fig/tail.png" alt="drawing" width="49%" />
@@ -93,11 +93,13 @@ The example is given in folder 'case_bimodal', and 'main.m' provides how to driv
 
 ### Results
 
+The left figure shows the distruction $P(q)$ and the right shows the free energy $U(q)$ with two local minima.
 <p align="center">
 <img src="case_bimodal/fig/PDF.png" alt="drawing" width="49%" />
+<img src="case_bimodal/fig/FreeEnergy.png" alt="drawing" width="49%" />
 </p>
 
-The following two figures shows $\langle v(t),v(0) \rangle$ and $\langle v(t),v(0) |x(0)=x^* \rangle$
+The left shows $\langle v(t),v(0) \rangle$ and right shows $\langle v(t),v(0) |x(0)=x^* \rangle$
 
 <p align="center">
 <img src="case_bimodal/fig/corr_vv.png" alt="drawing" width="49%" />

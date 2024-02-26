@@ -1,5 +1,8 @@
+%% For generating training sets and simulations.
+
+parpool(16)   % use parfor with 16 threads
 M=128;
-% step0_collect_data(M); % get data from MD trajectories
+step0_collect_data(M); % get data from MD trajectories
 step1_PDF(M); % compute Probability Distribution Function with ksdensity
 step2_hx(); % compute h(x)
 
@@ -56,12 +59,25 @@ corr4=load('data/corr_hx_GLE_2D.mat');
 figure(1);hold on;box on
 set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
 plot(ff_x,pdf)
-title('PDF')
-xlabel('x');ylabel('\rho (x)')
+title('Probability Distribution','Interpreter','latex')
+xlabel('$q$','Interpreter','latex')
+ylabel('$\rho(q)$','Interpreter','latex')
 set(gca,'FontSize',30,'LineWidth',2.0)
 saveas(gcf,'fig/PDF.png')
 
 figure(2);hold on;box on
+set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
+plot(ff_x,-log(pdf))
+ylim([0,15])
+title('Free Energy','Interpreter','latex')
+xlabel('$q$','Interpreter','latex');
+ylabel('$U(q)/k_BT$','Interpreter','latex')
+xticks([0,10,20])
+yticks([0,5,10,15])
+set(gca,'FontSize',30,'LineWidth',2.0)
+saveas(gcf,'fig/FreeEnergy.png')
+
+figure(3);hold on;box on
 set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
 corr_ver='corr_vv';
 plot(corr1.corr_t,corr1.(corr_ver),'Displayname','MD')
@@ -70,19 +86,20 @@ plot(corr3.corr_t,corr3.(corr_ver),'Displayname','SD-GLE-1D')
 plot(corr4.corr_t,corr4.(corr_ver),'Displayname','SD-GLE-2D')
 xlim([0,40])
 legend
-title('<v(t),v(0)>')
-xlabel('x');ylabel('\rho (x)')
+title('Velocity Correlation','Interpreter','latex')
+xlabel('$t$','Interpreter','latex');
+ylabel('$\langle v(t),v(0) \rangle$','Interpreter','latex')
 set(gca,'FontSize',30,'LineWidth',2.0)
 saveas(gcf,'fig/corr_vv.png')
 
-figure(3);hold on;box on
+fig=figure(3);hold on;box on
 set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
 corr_ver='xcorr_vv';
 i=1;
 for bin=8:8:32
     subplot(2,2,i);i=i+1;
     hold on;box on;
-    title(['x=[',num2str(hx_x(bin)),',',num2str(hx_x(bin)+hx_x(2)-hx_x(1)),']'])
+    title(['$q^* \in [',num2str(hx_x(bin)),',',num2str(hx_x(bin)+hx_x(2)-hx_x(1)),']$'],'Interpreter','latex')
     set(gca,'ColorOrderIndex',1)
     plot(corr1.xcorr_t,corr1.(corr_ver)(bin,:),'Displayname','MD')
     plot(corr2.xcorr_t,corr2.(corr_ver)(bin,:),'Displayname','GLE')
@@ -91,6 +108,13 @@ for bin=8:8:32
     legend
     set(gca,'FontSize',16,'LineWidth',2.0)
 end
+axs=axes(fig,'visible','off'); 
+axs.Title.Visible='on';
+axs.XLabel.Visible='on';
+axs.YLabel.Visible='on';
+ylabel(axs,'$\langle v(t),v(0) |q(0)=q^* \rangle$','Interpreter','latex');
+xlabel(axs,'$t$','Interpreter','latex');
+set(axs,'FontSize',30,'LineWidth',2.0)
 saveas(gcf,'fig/xcorr_vv.png')
 
 figure(4);hold on;box on
@@ -101,39 +125,13 @@ plot(tail_x,ksdensity(corr2.tail,tail_x,'Bandwidth',bd),'Displayname','GLE')
 plot(tail_x,ksdensity(corr3.tail,tail_x,'Bandwidth',bd),'Displayname','SD-GLE-1D')
 plot(tail_x,ksdensity(corr4.tail,tail_x,'Bandwidth',bd),'Displayname','SD-GLE-2D')
 xlim([0,5])
+set(gca, 'YScale', 'log', 'XScale', 'log')
 set(gca, 'YScale', 'log')
-legend
-title('Distribution for the time that x>15')
-xlabel('time period');ylabel('distribution')
+legend('Location','Best')
+xlabel('time period','Interpreter','latex');ylabel('distribution','Interpreter','latex')
 set(gca,'FontSize',30,'LineWidth',2.0)
 saveas(gcf,'fig/tail.png')
 
-%%
-close all
-figure(5);hold on;box on
-set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
-tail_x=(0:500)*0.02;bd=0.08;
-plot(tail_x,ksdensity(corr1.tail,tail_x,'Bandwidth',bd),'Displayname','MD')
-plot(tail_x,ksdensity(corr2.tail,tail_x,'Bandwidth',bd),'Displayname','GLE')
-plot(tail_x,ksdensity(corr3.tail,tail_x,'Bandwidth',bd),'Displayname','SD-GLE-1D')
-plot(tail_x,ksdensity(corr4.tail,tail_x,'Bandwidth',bd),'Displayname','SD-GLE-2D')
-xlim([0,5])
-set(gca, 'YScale', 'log', 'XScale', 'log')
-legend('Location','Best')
-xlabel('time period');ylabel('distribution')
-set(gca,'FontSize',30,'LineWidth',2.0)
-saveas(gcf,'fig/tail_v2.png')
-
-figure(6);hold on;box on
-set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
-plot(ff_x,-log(pdf))
-ylim([0,15])
-xlabel('$q$','Interpreter','latex');
-ylabel('$U(q)/k_BT$','Interpreter','latex')
-xticks([0,10,20])
-yticks([0,5,10,15])
-set(gca,'FontSize',30,'LineWidth',2.0)
-saveas(gcf,'fig/FreeEnergy.png')
 
 
 
