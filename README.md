@@ -52,8 +52,11 @@ h(x)= \frac{\langle \dot{v}_0-f(x_0),\dot{v}_0 |x_0=x \rangle}{\langle v_0,v_0 \
 
 The following two figures shows $\langle v(t),v(0) \rangle$ and $\langle v(t),v(0) |x(0)=x^* \rangle$
 
-<img src="case_unimodal/fig/corr_vv.png" alt="drawing" width="49%" />
-<img src="case_unimodal/fig/xcorr_vv.png" alt="drawing" width="49%" />
+<p align="center">
+  <img src="case_unimodal/fig/corr_vv.png" alt="drawing" width="49%" />
+  <img src="case_unimodal/fig/xcorr_vv.png" alt="drawing" width="49%" />
+</p>
+
 
 The following figure shows the distribution of the continuous time period that $x>15$.
 
