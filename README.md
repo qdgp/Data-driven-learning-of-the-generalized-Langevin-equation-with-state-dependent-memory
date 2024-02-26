@@ -8,7 +8,7 @@ We present a data-driven method to learn stochastic reduced models of complex sy
 
 ### System
 
-Consider a polymer molecule consisting of $N = 16$ atoms. The resolved variable is defined as the end-to-end distance. ([see details here](https://pubs.aip.org/aip/jcp/article/158/3/034102/2871114/Data-driven-construction-of-stochastic-reduced)).
+Consider a polymer molecule consisting of $N = 16$ atoms. The resolved variable is defined as the end-to-end distance. ([see paper](https://pubs.aip.org/aip/jcp/article/158/3/034102/2871114/Data-driven-construction-of-stochastic-reduced)).
 
 ### Codes
 
@@ -70,7 +70,7 @@ The following figure shows the distribution of the period for the molecule takin
 ## Numerical Example 2 (case_bimodal)
 ### System
 
-Consider the molecule benzyl bromide in an aqueous environment. The full system consists of one benzyl bromide molecule and 2400 water molecules with the periodic boundary condition imposed along each direction. The resolved variable is defined as the distance between the bromine atom and the ipso-carbon atom. ([see details here](https://arxiv.org/abs/2310.18582))
+Consider the molecule benzyl bromide in an aqueous environment. The full system consists of one benzyl bromide molecule and 2400 water molecules with the periodic boundary condition imposed along each direction. The resolved variable is defined as the distance between the bromine atom and the ipso-carbon atom. ([see arxiv](https://arxiv.org/abs/2310.18582))
 
 ### Codes
 
