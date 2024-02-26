@@ -46,12 +46,14 @@ h(q)= \frac{\langle \dot{v}_0-f(q_0),\dot{v}_0 |q_0=q \rangle}{\langle v_0,v_0 \
 10. The visualization is at the end of the 'main.m'. 
 
 ### Result
+The over probability distribution and free energy. This is a simple case without energy barrier.
 
 <p align="center">
 <img src="case_unimodal/fig/PDF.png" alt="drawing" width="49%" />
+<img src="case_unimodal/fig/FreeEnergy.png" alt="drawing" width="49%" />
 </p>
 
-The following two figures shows $\langle v(t),v(0) \rangle$ and $\langle v(t),v(0) |q(0)=q^* \rangle$
+The following two figures shows velocity correlation $\langle v(t),v(0) \rangle$ and state-dependent velocity correlation $\langle v(t),v(0) |q(0)=q^* \rangle$. 'MD' represent the full model, 'GLE' represent the standard GLE, 'SD-GLE-1D' represent our model with the 1D $h(q)$ formulation below, 'SD-GLE-1D' represent our model with the 2D $h(q)$ formulation in article.
 
 <p align="center">
   <img src="case_unimodal/fig/corr_vv.png" alt="drawing" width="49%" />
@@ -72,7 +74,7 @@ Consider the molecule benzyl bromide in an aqueous environment. The full system 
 
 ### Codes
 
-The example is given in folder 'case_bimodal', and 'main.m' provides how to drive these codes.
+The example is given in folder 'case_bimodal', and 'main.m' provides how to drive these codes. The argument is liter than it used in article. The basis for $h(q)$ is 66 in article but 8 here, the number of three-point correlation functions is 65 in article but 26 here. This makes it more efficiency but less accuracy. The model in the article is given as 'MD_ND_4_std_lite.mat'.
 
 1. Compute the probability distribution function by 'step1_PDF.m', which will also get the conservative force ('data/PDF.mat').
 
@@ -80,7 +82,7 @@ The example is given in folder 'case_bimodal', and 'main.m' provides how to driv
 
 3. Compute three point correlation functions for ND state-dependent kernel by 'step3_training_set.m' and 'step4_collect_training_set.m' ('data/dx_0.2_w_301.mat').
 
-4. Train the model with 'train.py' and 'get_model.py' ('MD_ND_4.mat', 'MD_ND_4_std.mat' is the model used in article, 'MD_ND_4_lite.mat' and 'MD_ND_4_std_lite.mat' is the corresponding lite version due to the size limitation)
+4. Train the model with 'train.py' and 'get_model.py' ('MD_ND_4.mat', 'MD_ND_4_std.mat' for model in article. 'MD_ND_4_lite.mat' and 'MD_ND_4_std_lite.mat' is the corresponding lite version due to the size limitation)
 
 5. Simulate the standard GLE model and state-dependent GLE model by 'step5_std_GLE.m', 'step5_hx_GLE.m'. 'step5_hx_GLE_fast_conv.m' do the same thing as 'step5_hx_GLE.m' but evalute convolution by fast convolution algorithm. 
 
@@ -96,7 +98,7 @@ The left figure shows the distruction $P(q)$ and the right shows the free energy
 <img src="case_bimodal/fig/FreeEnergy.png" alt="drawing" width="49%" />
 </p>
 
-The left shows $\langle v(t),v(0) \rangle$ and right shows $\langle v(t),v(0) |x(0)=x^* \rangle$
+The following two figures shows velocity correlation $\langle v(t),v(0) \rangle$ and state-dependent velocity correlation $\langle v(t),v(0) |q(0)=q^* \rangle$. 'MD' represent the full model, 'GLE' represent the standard GLE, 'SD-GLE' represent our model with the given training set, 'article' represent the model used in article.
 
 <p align="center">
 <img src="case_bimodal/fig/corr_vv.png" alt="drawing" width="49%" />

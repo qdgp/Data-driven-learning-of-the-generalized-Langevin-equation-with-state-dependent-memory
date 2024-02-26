@@ -126,7 +126,6 @@ plot(tail_x,ksdensity(corr3.tail,tail_x,'Bandwidth',bd),'Displayname','SD-GLE-1D
 plot(tail_x,ksdensity(corr4.tail,tail_x,'Bandwidth',bd),'Displayname','SD-GLE-2D')
 xlim([0,5])
 set(gca, 'YScale', 'log', 'XScale', 'log')
-set(gca, 'YScale', 'log')
 legend('Location','Best')
 xlabel('time period','Interpreter','latex');ylabel('distribution','Interpreter','latex')
 set(gca,'FontSize',30,'LineWidth',2.0)
