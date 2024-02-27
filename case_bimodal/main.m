@@ -101,14 +101,15 @@ xlabel(axs,'$t$','Interpreter','latex');
 set(axs,'FontSize',30,'LineWidth',2.0)
 saveas(gcf,'fig/xcorr_vv.png')
 
-
+%%
+close all
 figure(5);hold on;box on;
 set(gcf, 'DefaultLineLineWidth', 3.0,'DefaultLineMarkerSize',12);
 t_sample = 10:10:8000;bd=80;
 plot(t_sample,ksdensity(corr1.t_A_B,t_sample,"Bandwidth",bd),'Displayname','MD')
 plot(t_sample,ksdensity(corr2.t_A_B,t_sample,"Bandwidth",bd),'Displayname','GLE')
 plot(t_sample,ksdensity(corr3.t_A_B,t_sample,"Bandwidth",bd),'Displayname','SD-GLE')
-set(gca, 'YScale', 'log', 'XScale', 'log')
+set(gca, 'YScale', 'log')
 ylim([10^-6,10^-2])
 xlim([10,4000])
 legend
