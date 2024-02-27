@@ -8,7 +8,7 @@ We present a data-driven method to learn stochastic reduced models of complex sy
 
 ### System
 
-Consider a polymer molecule consisting of $N = 16$ atoms. The resolved variable is defined as the end-to-end distance. ([see paper](https://pubs.aip.org/aip/jcp/article/158/3/034102/2871114/Data-driven-construction-of-stochastic-reduced)).
+Consider a polymer molecule consisting of 16 atoms. The resolved variable is defined as the end-to-end distance. ([see paper](https://pubs.aip.org/aip/jcp/article/158/3/034102/2871114/Data-driven-construction-of-stochastic-reduced)).
 
 ### Codes
 
