@@ -33,7 +33,7 @@ h(q)= \frac{\langle \dot{v}_0-f(q_0),\dot{v}_0 |q_0=q \rangle}{\langle v_0,v_0 \
 
 4. Compute three-point correlation functions for N features (ND) state-dependent kernel by 'step3_training_set.m' and 'step4_collect_training_set.m' ('data/dx_10_w_501.mat').
 
-5. Train the model with 'train.py' and 'get_model.py' ('MD_ND_2.mat')
+5. Train the model with 'train.py' ('MD_ND_2.mat').
 
 6. Simulate the standard GLE model and state-dependent GLE model by 'step5_std_GLE.m', 'step5_hx_GLE_1D.m' and 'step5_hx_GLE_2D.m' (mat files in 'GLE_data').
 
@@ -78,7 +78,7 @@ The example is given in folder 'case_bimodal', and 'main.m' provides how to driv
 
 3. Compute three-point correlation functions for ND state-dependent kernel by 'step3_training_set.m' and 'step4_collect_training_set.m' ('data/dx_0.2_w_301.mat').
 
-4. Train the model with 'train.py' and 'get_model.py' ('MD_ND_4.mat', 'MD_ND_4_std.mat' for model in paper. 'MD_ND_4_lite.mat' and 'MD_ND_4_std_lite.mat' is the corresponding lite version due to the size limitation)
+4. Train the model with 'train.py' ('MD_ND_4.mat', 'MD_ND_4_std.mat' for model in paper. 'MD_ND_4_lite.mat' and 'MD_ND_4_std_lite.mat' is the corresponding lite version due to the size limitation).
 
 5. Simulate the standard GLE model and state-dependent GLE model by 'step5_std_GLE.m', 'step5_hx_GLE.m'. 'step5_hx_GLE_fast_conv.m' do the same thing as 'step5_hx_GLE.m' but evaluate convolution by fast convolution algorithm. 
 
