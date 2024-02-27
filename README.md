@@ -16,7 +16,7 @@ The example is given in folder 'case_unimodal', and 'main.m' provides how to dri
 
 1. Compute the probability distribution function by 'step1_PDF.m', which provides free energy and the conservative force ('data/PDF.mat').
 
-2. Compute the one feature (1D) $h(q)$ by 'step2_hx.m'. This is done by only consider the state-dependency when $t=0$ ('data/PDF.mat').
+2. Compute the one feature (1D) $h(q)$ by 'step2_hx.m'. This is done by only considering the state-dependency when $t=0$ ('data/PDF.mat').
 
 ```math
 m\dot{v}_t=F(q_t)-h(q_t) \int_0^t \theta(t-\tau)h(q_\tau) v_\tau d\tau+h(q_t) R_t 
@@ -42,14 +42,14 @@ h(q)= \frac{\langle \dot{v}_0-f(q_0),\dot{v}_0 |q_0=q \rangle}{\langle v_0,v_0 \
 8. The visualization is at the end of the 'main.m'. 
 
 ### Result
-The two figures show the probability distribution and free energy without energy barrier.
+The two figures show the probability distribution and free energy without an energy barrier.
 
 <p align="center">
 <img src="case_unimodal/fig/PDF.png" alt="drawing" width="49%" />
 <img src="case_unimodal/fig/FreeEnergy.png" alt="drawing" width="49%" />
 </p>
 
-The following two figures shows velocity correlation $\langle v(t),v(0) \rangle$ and state-dependent velocity correlation $\langle v(t),v(0) |q(0)=q^* \rangle$. 'MD' represent the full model, 'GLE' represent the standard GLE, 'SD-GLE-1D' represent our model with the 1D $h(q)$ formulation as mentioned before, 'SD-GLE-2D' represent our model with the 2D $h(q)$ formulation in paper.
+The following two figures shows velocity correlation $\langle v(t),v(0) \rangle$ and state-dependent velocity correlation $\langle v(t),v(0) |q(0)=q^* \rangle$. 'MD' represents the full model, 'GLE' represents the standard GLE, 'SD-GLE-1D' represents our model with the 1D $h(q)$ formulation as mentioned before, 'SD-GLE-2D' represents our model with the 2D $h(q)$ formulation in the paper.
 
 <p align="center">
   <img src="case_unimodal/fig/corr_vv.png" alt="drawing" width="49%" />
@@ -70,15 +70,15 @@ Consider the molecule benzyl bromide in an aqueous environment. The full system 
 
 ### Codes
 
-The example is given in folder 'case_bimodal', and 'main.m' provides how to drive these codes. The parameter here is smaller than it used in paper. The number of basis for $h(q)$ is 66 in paper but 8 here, the number of three-point correlation functions is 65 in paper but 26 here.
+The example is given in folder 'case_bimodal', and 'main.m' provides how to drive these codes. The parameters here are smaller than the ones used in the paper. The number of bases for $h(q)$ is 66 in the paper but 8 here, and the number of three-point correlation functions is 65 in the paper but 26 here.
 
 1. Compute the probability distribution function by 'step1_PDF.m', which provides free energy and the conservative force ('data/PDF.mat').
 
-2. Compute the two-point correlation functions by 'step2_std_corr.m' to construct 1D kernel ('data/corr.mat').
+2. Compute the two-point correlation functions by 'step2_std_corr.m' to construct the 1D kernel ('data/corr.mat').
 
 3. Compute three-point correlation functions for ND state-dependent kernel by 'step3_training_set.m' and 'step4_collect_training_set.m' ('data/dx_0.2_w_301.mat').
 
-4. Train the model with 'train.py' ('MD_ND_4.mat', 'MD_ND_4_std.mat' for model in paper. 'MD_ND_4_lite.mat' and 'MD_ND_4_std_lite.mat' is the corresponding lite version due to the size limitation).
+4. Train the model with 'train.py' ('MD_ND_4.mat', 'MD_ND_4_std.mat' for the model in the paper. 'MD_ND_4_lite.mat' and 'MD_ND_4_std_lite.mat' is the corresponding lite version due to the size limitation).
 
 5. Simulate the standard GLE model and state-dependent GLE model by 'step5_std_GLE.m', 'step5_hx_GLE.m'. 'step5_hx_GLE_fast_conv.m' do the same thing as 'step5_hx_GLE.m' but evaluate convolution by fast convolution algorithm. 
 
@@ -94,7 +94,7 @@ The two figures show the probability distribution and free energy with two local
 <img src="case_bimodal/fig/FreeEnergy.png" alt="drawing" width="49%" />
 </p>
 
-The following two figures shows velocity correlation $\langle v(t),v(0) \rangle$ and state-dependent velocity correlation $\langle v(t),v(0) |q(0)=q^* \rangle$. 'MD' represent the full model, 'GLE' represent the standard GLE, 'SD-GLE' represent our model.
+The following two figures shows velocity correlation $\langle v(t),v(0) \rangle$ and state-dependent velocity correlation $\langle v(t),v(0) |q(0)=q^* \rangle$. 'MD' represents the full model, 'GLE' represents the standard GLE, and 'SD-GLE' represents our model.
 
 <p align="center">
 <img src="case_bimodal/fig/corr_vv.png" alt="drawing" width="49%" />
@@ -102,13 +102,13 @@ The following two figures shows velocity correlation $\langle v(t),v(0) \rangle$
 </p>
 
 ## Full Data
-Due to the storage limitation of GitHub, we only upload part of the data. The full data including MD trajctories (example 1), positon and velocity of the resolved variables, simulation data (example1) can be accessed from Globus with the link (https://app.globus.org/file-manager?origin_id=ec51ed95-bc26-44a4-a8a0-65b74d694c33&origin_path=%2F).
+Due to the storage limitation of GitHub, we only upload part of the data. The full data including MD trajectories (example 1), position and velocity of the resolved variables, and simulation data (example1) can be accessed from Globus with the link (https://app.globus.org/file-manager?origin_id=ec51ed95-bc26-44a4-a8a0-65b74d694c33&origin_path=%2F).
 
 
 ## Software and Library
 
-Python enviroments is given in file 'conda-environment.txt'. 
+Python environment is given in the file 'conda-environment.txt'. 
 
-Matlab version is 2022a. 
+MATLAB version is 2022a. 
 
 The training is performed on v100s.
