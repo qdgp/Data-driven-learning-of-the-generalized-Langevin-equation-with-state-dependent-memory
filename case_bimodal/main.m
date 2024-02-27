@@ -89,7 +89,6 @@ for bin=[12,19,22,27]
     plot(corr1.xcorr_t,corr1.(corr_ver)(bin,:),'Displayname','MD')
     plot(corr2.xcorr_t,corr2.(corr_ver)(bin,:),'Displayname','GLE')
     plot(corr3.xcorr_t,corr3.(corr_ver)(bin,:),'Displayname','SD-GLE')
-    plot(corr4.xcorr_t,corr4.(corr_ver)(bin,:),'Displayname','article')
     set(gca,'FontSize',16,'LineWidth',2.0)
     legend
 end
@@ -109,7 +108,6 @@ t_sample = 10:10:8000;bd=80;
 plot(t_sample,ksdensity(corr1.t_A_B,t_sample,"Bandwidth",bd),'Displayname','MD')
 plot(t_sample,ksdensity(corr2.t_A_B,t_sample,"Bandwidth",bd),'Displayname','GLE')
 plot(t_sample,ksdensity(corr3.t_A_B,t_sample,"Bandwidth",bd),'Displayname','SD-GLE')
-plot(t_sample,ksdensity(corr4.t_A_B,t_sample,"Bandwidth",bd),'Displayname','article')
 set(gca, 'YScale', 'log', 'XScale', 'log')
 ylim([10^-6,10^-2])
 xlim([10,4000])
