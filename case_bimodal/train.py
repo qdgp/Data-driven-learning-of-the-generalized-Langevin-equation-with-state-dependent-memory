@@ -11,7 +11,7 @@ ND=4
 Nbin=26
 N_hx=8
 
-save_file_name=f'ML_ND_{ND}_v2.mat'
+save_file_name=f'ML_ND_{ND}.mat'
 if os.path.isfile(save_file_name):
     raise KeyError('file exists')
 
@@ -19,7 +19,7 @@ train_step=20000
 PP_corr_max=300
 corr_cut_off=20000
 Tcut=200
-a=0.02
+a=0.04
 
 lr=0.01
 decay_steps=1000
