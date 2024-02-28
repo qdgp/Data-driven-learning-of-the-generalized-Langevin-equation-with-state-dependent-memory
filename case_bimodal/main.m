@@ -84,7 +84,7 @@ i=1;
 for bin=[12,19,22,27]
     subplot(2,2,i);i=i+1;
     hold on;box on;
-    title(['$q^* \in [',num2str(hx_x(bin)),',',num2str(hx_x(bin)+hx_x(2)-hx_x(1)),']$'],'Interpreter','latex')
+    title(['$q^* \in [',num2str(corr1.xcorr_x(bin)),',',num2str(corr1.xcorr_x(bin)+corr1.xcorr_x(2)-corr1.xcorr_x(1)),']$'],'Interpreter','latex')
     set(gca,'ColorOrderIndex',1)
     plot(corr1.xcorr_t,corr1.(corr_ver)(bin,:),'Displayname','MD')
     plot(corr2.xcorr_t,corr2.(corr_ver)(bin,:),'Displayname','GLE')

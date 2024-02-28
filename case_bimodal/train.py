@@ -19,7 +19,7 @@ train_step=20000
 PP_corr_max=300
 corr_cut_off=20000
 Tcut=200
-a=0.04
+a=0.02
 
 lr=0.01
 decay_steps=1000

@@ -1,29 +1,24 @@
-function step5_hx_GLE_fast_conv(T_scale,N_per_step,ND,random_seed)
-M=16;
-a=0.04;
+function step5_hx_GLE_fast_conv(T_scale,N_per_step,M,ML_file,save_file_name,random_seed)
 load('../data/PDF.mat','mass','ff_x','ff_f','kT','v_square','dt');
 fx=@(x) kT*interp1(ff_x,ff_f, x, 'linear','extrap');
 dt=dt/N_per_step;
 
-ML=load(['../ML_ND_',num2str(ND),'.mat'],'T_cut','hx','Theta');
-hx_x=(2.8:0.05:4.1)';
-
-% ML=load(['../ML_ND_',num2str(ND),'_t3.mat'],'T_cut','hx','hx_x','Theta');
-% hx_x=ML.hx_x;
-
+ML=load(ML_file,'T_cut','hx','hx_x','Theta','a','ND');
+a=double(ML.a);
+ND=double(ML.ND);
 T_cut=double(ML.T_cut);
+step=size(ML.Theta,1);
 
-save_file_name=['GLE_ND_',num2str(ND),'_rng_',num2str(random_seed),'.mat'];
 T=T_cut*T_scale;
 N=T/dt;
 disp(T)
 
-Theta=double(squeeze(ML.Theta(end,:,:,:)));
+Theta=double(squeeze(ML.Theta(step,:,:,:)));
 [R,~]=generate_noise(Theta,T_cut,dt,T_scale,kT,a,M,random_seed);
 
-ML_hx=squeeze(ML.hx(end,:,:))';
+ML_hx=squeeze(ML.hx(step,:,:))';
 ML_hx=double([ML_hx(1,:);ML_hx;ML_hx(end,:)]);
-ML_hx_x=[-100;hx_x;100];
+ML_hx_x=[-100;ML.hx_x;100];
 hx=@(x) interp1(ML_hx_x,ML_hx, x, 'linear','extrap');   % (1,3)
 
 B=2;K=1024; a1=8; a2=0.6*256; dw=2*pi/T_cut;
